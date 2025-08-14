@@ -160,28 +160,6 @@ SELECT * FROM view_customer_orders;
 SELECT * FROM view_high_order_customers;
 SELECT * FROM view_city_highest_orders;
 ```
-
----
-
-## 5. Advanced Query Example
-
-```sql
-SELECT CUSTOMER_NAME
-FROM CUSTOMERS
-WHERE CUSTOMER_ID <> 1
-AND NOT EXISTS (
-    SELECT ORDER_TYPE
-    FROM ORDERS o1
-    WHERE CUSTOMER_ID = 1
-    AND NOT EXISTS (
-        SELECT 1
-        FROM ORDERS o2
-        WHERE o2.CUSTOMER_ID = CUSTOMERS.CUSTOMER_ID
-        AND o2.ORDER_TYPE = o1.ORDER_TYPE
-    )
-);
-```
-
 ---
 
 ## Key Concepts
